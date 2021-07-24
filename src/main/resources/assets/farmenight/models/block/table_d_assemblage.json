@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/table_d_assemblage",
+  "texture": {
+    "all": "farmenight:block/table_d_assemblage"
+  }
+}

@@ -4,6 +4,7 @@ import fr.shadou.farmenight.Main;
 import fr.shadou.farmenight.money.AddMoney;
 import fr.shadou.farmenight.production.alcool.AlcoolPropertiesClose;
 import fr.shadou.farmenight.production.alcool.AlcoolPropertiesOpen;
+import fr.shadou.farmenight.production.arme.Tabledasemblage;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -28,4 +29,10 @@ public class ModItem {
     //Test Money
     public static final RegistryObject<Item> ADD_MONEY = ITEMS.register("add_money", () -> new AddMoney(new Item.Properties()));
 
+    //Armes
+    public static final RegistryObject<Item> CROSSE = ITEMS.register("crosse", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GARDEMAIN = ITEMS.register("gardemain", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CHARGEUR = ITEMS.register("chargeur", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CANON = ITEMS.register("canon", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> AK_47 = ITEMS.register("ak_47",() -> new Item(new Item.Properties()));
 }

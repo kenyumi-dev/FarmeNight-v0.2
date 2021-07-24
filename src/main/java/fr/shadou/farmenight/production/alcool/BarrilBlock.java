@@ -2,6 +2,7 @@ package fr.shadou.farmenight.production.alcool;
 
 
 import fr.shadou.farmenight.Instas;
+import fr.shadou.farmenight.init.ModItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,16 +23,8 @@ import net.minecraft.world.World;
 
 public class BarrilBlock extends Block {
 
-    private static final ITextComponent CONTAINER_NAME = new TranslationTextComponent("production.alcool.BarrilContrainer");
-
     public BarrilBlock(Properties properties) {
         super(properties);
-    }
-
-    public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
-        return new SimpleNamedContainerProvider((id, inventory, player) -> {
-            return new BarrilContainer(id, inventory, IWorldPosCallable.create(worldIn, pos));
-        }, CONTAINER_NAME);
     }
 
     @Override
@@ -61,28 +54,28 @@ public class BarrilBlock extends Block {
                 te.sousLEVEL_VIN(1);
                 itemStack.shrink(1);
                 if (itemStack.isEmpty()) {
-                    player.setItemInHand(handIn, Instas.wine);
+                    player.setItemInHand(handIn, Instas.ItemStackCustom(ModItem.BOTTLE_WINE_OPEN));
                     return ActionResultType.SUCCESS;
-                } else if (!player.inventory.add(Instas.wine)) {
-                    player.drop(Instas.wine, false);
+                } else if (!player.inventory.add(Instas.ItemStackCustom(ModItem.BOTTLE_WINE_OPEN))) {
+                    player.drop(Instas.ItemStackCustom(ModItem.BOTTLE_WINE_OPEN), false);
                     return ActionResultType.SUCCESS;
                 }
             }
 
-            if (item == Instas.bouchon_item & te.isPercer() == 1){
+            if (item == Instas.ItemCustom(ModItem.BOUCHON) & te.isPercer() == 1){
                 te.falsepercer(0);
                 itemStack.shrink(1);
                 return ActionResultType.SUCCESS;
             }
 
-            if (item == Instas.perceur_item & te.isPercer() == 0){
+            if (item == Instas.ItemCustom(ModItem.PERCEUR) & te.isPercer() == 0){
                 te.truepercer(1);
                 return ActionResultType.SUCCESS;
             }else if(te.isPercer() == 1){
                 return ActionResultType.PASS;
             }
 
-            if (item == Instas.raisin_item & te.getReserveRAISIN() <= 25){
+            if (item == Instas.ItemCustom(ModItem.RAISIN) & te.getReserveRAISIN() <= 25){
                 te.addReserveRAISIN(1);
                 itemStack.shrink(1);
                 te.fermentation();
