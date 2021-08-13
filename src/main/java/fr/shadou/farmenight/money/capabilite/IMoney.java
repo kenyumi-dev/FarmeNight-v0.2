@@ -8,4 +8,6 @@ public interface IMoney {
 
     void addMoney(final int addMoney);
 
+    void sousMoney(final int sousMoney);
+
 }

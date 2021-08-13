@@ -28,4 +28,9 @@ public class Money implements IMoney{
     public void addMoney(int addMoney) {
         this.money = this.money + addMoney;
     }
+
+    @Override
+    public void sousMoney(int sousMoney) {
+        this.money = this.money - sousMoney;
+    }
 }

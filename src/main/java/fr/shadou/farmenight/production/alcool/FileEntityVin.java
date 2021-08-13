@@ -1,5 +1,6 @@
 package fr.shadou.farmenight.production.alcool;
 
+import fr.shadou.farmenight.Gestion;
 import fr.shadou.farmenight.init.ModTileEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
@@ -94,9 +95,9 @@ public class FileEntityVin extends TileEntity implements ITickableTileEntity {
 
     public void fermentation(){
         this.setTick(0);
-        int j = 100;
+        Gestion ges = new Gestion();
         if (this.getReserveRAISIN() >= 5){
-            while (this.getTick() >= j){}
+            while (this.getTick() >= ges.TickTime(0,5)){}
             this.addLEVEL_VIN(1);
             this.sousReserveRAISIN(5);
         }

@@ -52,16 +52,17 @@ public class CapaMoney {
         return null;
 }
 
-    @SubscribeEvent
-    public static void attachCapabilities(final AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof LivingEntity) {
-            final Money money = new Money((LivingEntity) event.getObject());
-            event.addCapability(ID, createProvider(money));
-        }
-    }
+
     @Mod.EventBusSubscriber(modid = Main.MODID)
     private static class EvenHandler{
 
+        @SubscribeEvent
+        public static void attachCapabilities(final AttachCapabilitiesEvent<Entity> event) {
+            if (event.getObject() instanceof LivingEntity) {
+                final Money money = new Money((LivingEntity) event.getObject());
+                event.addCapability(ID, createProvider(money));
+            }
+        }
         @SubscribeEvent
         public static void playerClone(final PlayerEvent.Clone event) {
             getMoney(event.getOriginal()).ifPresent(oldmoney -> {

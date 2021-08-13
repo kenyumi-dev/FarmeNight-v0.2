@@ -13,4 +13,5 @@ public class ModContainer {
 
     public static final RegistryObject<ContainerType<TableContainer>> TABLE_CONTAINER = CONTAINERS.register("table_container", () -> new ContainerType<>(TableContainer::new));
 
+
 }

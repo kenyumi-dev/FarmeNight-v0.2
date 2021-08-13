@@ -19,10 +19,7 @@ public class AddMoney extends Item {
 
     @Override
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-        Money money = new Money(player);
-        money.addMoney(1);
-        CapaMoney.getMoney(player);
-        System.out.println(money.getMoney());
+        CapaMoney.getMoney(player).ifPresent((money) -> {money.addMoney(1);System.out.println(money.getMoney());});
 
         return ActionResult.success(player.getItemInHand(hand));
     }

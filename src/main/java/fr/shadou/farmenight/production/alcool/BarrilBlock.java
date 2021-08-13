@@ -54,10 +54,10 @@ public class BarrilBlock extends Block {
                 te.sousLEVEL_VIN(1);
                 itemStack.shrink(1);
                 if (itemStack.isEmpty()) {
-                    player.setItemInHand(handIn, Instas.ItemStackCustom(ModItem.BOTTLE_WINE_OPEN));
+                    player.setItemInHand(handIn, Instas.ItemStackCustom(ModItem.BOTTLE_WINE));
                     return ActionResultType.SUCCESS;
-                } else if (!player.inventory.add(Instas.ItemStackCustom(ModItem.BOTTLE_WINE_OPEN))) {
-                    player.drop(Instas.ItemStackCustom(ModItem.BOTTLE_WINE_OPEN), false);
+                } else if (!player.inventory.add(Instas.ItemStackCustom(ModItem.BOTTLE_WINE))) {
+                    player.drop(Instas.ItemStackCustom(ModItem.BOTTLE_WINE), false);
                     return ActionResultType.SUCCESS;
                 }
             }
