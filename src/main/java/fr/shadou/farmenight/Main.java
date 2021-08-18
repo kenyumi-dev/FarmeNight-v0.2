@@ -1,5 +1,6 @@
 package fr.shadou.farmenight;
 
+import fr.shadou.farmenight.claim.claimworld.ClaimStrokage;
 import fr.shadou.farmenight.init.*;
 import fr.shadou.farmenight.pnj.PNJVinRenderer;
 import fr.shadou.farmenight.production.arme.TableContainerScreen;
@@ -30,7 +31,6 @@ public class Main {
         ModTileEntity.TILE_ENTITY.register(bus);
         ModContainer.CONTAINERS.register(bus);
         ModEntities.ENTITIES.register(bus);
-
     }
 
     private void setup(FMLCommonSetupEvent e) {

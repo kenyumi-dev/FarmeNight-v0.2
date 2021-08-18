@@ -1,7 +1,7 @@
 package fr.shadou.farmenight.init;
 
 import fr.shadou.farmenight.Main;
-import fr.shadou.farmenight.commands.CommandGod;
+import fr.shadou.farmenight.commands.CommandClaim;
 import fr.shadou.farmenight.commands.CommandMoney;
 import fr.shadou.farmenight.pnj.PNJVin;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
@@ -25,7 +25,7 @@ public class ModSetup {
     @SubscribeEvent
     public static void serverLoad(RegisterCommandsEvent event) {
         CommandMoney.register(event.getDispatcher());
-        CommandGod.register(event.getDispatcher());
+        CommandClaim.register(event.getDispatcher());
     }
 
 }
