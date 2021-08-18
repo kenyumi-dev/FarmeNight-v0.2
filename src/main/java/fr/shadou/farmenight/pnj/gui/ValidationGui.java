@@ -108,7 +108,7 @@ public class ValidationGui extends Screen {
     public void buttonvalide(int relX, int relY, int taille){
         addButton(new ImageButton(relX+26,relY+37,taille,taille,0,0,0,VALIDE_TEXTURES,taille,taille,button ->{
             Minecraft.getInstance().setScreen(new PNJVinGui(NAME,this.player));
-            for (int i = 0; i < this.nbtItem;++i){
+            for (int i = 0; i > this.nbtItem;++i){
                 this.player.addItem(itemchoisi);
             }
             CapaMoney.getMoney(this.player).ifPresent(money -> {money.sousMoney(amount);System.out.println(money.getMoney());});

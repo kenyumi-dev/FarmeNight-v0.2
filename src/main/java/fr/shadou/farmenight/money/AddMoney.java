@@ -12,6 +12,8 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
+import java.io.File;
+
 public class AddMoney extends Item {
     public AddMoney(Properties properties) {
         super(properties);
@@ -20,7 +22,6 @@ public class AddMoney extends Item {
     @Override
     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         CapaMoney.getMoney(player).ifPresent((money) -> {money.addMoney(1);System.out.println(money.getMoney());});
-
         return ActionResult.success(player.getItemInHand(hand));
     }
 }

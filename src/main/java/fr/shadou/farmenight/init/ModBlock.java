@@ -1,6 +1,7 @@
 package fr.shadou.farmenight.init;
 
 import fr.shadou.farmenight.Main;
+import fr.shadou.farmenight.claim.NewGod;
 import fr.shadou.farmenight.production.alcool.BarrilBlock;
 import fr.shadou.farmenight.production.server.Server;
 import fr.shadou.farmenight.production.arme.Tabledasemblage;
@@ -18,6 +19,8 @@ public class ModBlock {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Main.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Main.MODID);
+
+    public static final RegistryObject<Block> NEWGOD = register("newgod", new NewGod(AbstractBlock.Properties.of(Material.BARRIER, MaterialColor.GOLD)));
 
     public static final RegistryObject<Block> BARRIL_VIN = register("barril_vin", new BarrilBlock(AbstractBlock.Properties.of(Material.DECORATION, MaterialColor.COLOR_BLACK)));
     public static final RegistryObject<Block> TABLE_D_ASSEMBLAGE = register("table_d_assemblage", new Tabledasemblage(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_GRAY)));

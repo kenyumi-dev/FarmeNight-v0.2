@@ -1,16 +1,10 @@
 package fr.shadou.farmenight;
 
 import fr.shadou.farmenight.init.*;
-import fr.shadou.farmenight.money.phone.PhoneContainerScreen;
-import fr.shadou.farmenight.pnj.PNJVin;
 import fr.shadou.farmenight.pnj.PNJVinRenderer;
 import fr.shadou.farmenight.production.arme.TableContainerScreen;
 import net.minecraft.client.gui.ScreenManager;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -37,17 +31,14 @@ public class Main {
         ModContainer.CONTAINERS.register(bus);
         ModEntities.ENTITIES.register(bus);
 
-
-
     }
 
     private void setup(FMLCommonSetupEvent e) {
-        ScreenManager.register(ModContainer.TABLE_CONTAINER.get(), TableContainerScreen::new);
-        RenderingRegistry.registerEntityRenderingHandler(ModEntities.PNJVIN.get(), PNJVinRenderer::new);
+
     }
 
     private void clientSetup(FMLClientSetupEvent e) {
-
+        ScreenManager.register(ModContainer.TABLE_CONTAINER.get(), TableContainerScreen::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.PNJVIN.get(), PNJVinRenderer::new);
     }
-
 }
