@@ -1,5 +1,6 @@
 package fr.shadou.farmenight.production.arme;
 
+import fr.shadou.farmenight.Gestion;
 import fr.shadou.farmenight.Instas;
 import fr.shadou.farmenight.init.ModBlock;
 import fr.shadou.farmenight.init.ModContainer;
@@ -22,48 +23,58 @@ import javax.annotation.Nullable;
 
 public class TableContainer extends Container {
 
-    private final IInventory inputInventory = new Inventory(5);
+    private final IInventory inputInventory;
     private final IWorldPosCallable worldPosCallable;
 
     public TableContainer(int windowIdIn, PlayerInventory playerInventoryIn) {
-        this(windowIdIn, playerInventoryIn, IWorldPosCallable.NULL);
+        this(windowIdIn, playerInventoryIn, new TileEntityArme(), IWorldPosCallable.NULL);
     }
 
-    protected TableContainer(int windowIdIn, PlayerInventory playerInventoryIn, final IWorldPosCallable worldPosCallableIn) {
+    protected TableContainer(int windowIdIn, PlayerInventory playerInventoryIn, IInventory inventory, IWorldPosCallable worldPosCallable) {
         super(ModContainer.TABLE_CONTAINER.get(), windowIdIn);
-        this.worldPosCallable = worldPosCallableIn;
+
+        this.inputInventory = inventory;
+        this.worldPosCallable = worldPosCallable;
 
         //Crosse
         this.addSlot(new Slot(this.inputInventory, 0, 10, 33) {
             @Override
             public boolean mayPlace(ItemStack p_75214_1_) {
-                return true;
+                return super.mayPlace(Instas.ItemStackCustom(ModItem.CROSSE));
             }
         });
         //GardeMain
         this.addSlot(new Slot(this.inputInventory, 1, 57, 26) {
             @Override
             public boolean mayPlace(ItemStack p_75214_1_) {
-                return true;
+                return super.mayPlace(Instas.ItemStackCustom(ModItem.GARDEMAIN));
             }
         });
         //Charguer
         this.addSlot(new Slot(this.inputInventory, 2,104,23){
             @Override
             public boolean mayPlace(ItemStack p_75214_1_) {
-                return true;
+                return super.mayPlace(Instas.ItemStackCustom(ModItem.CHARGEUR));
             }
         });
         //Canon
         this.addSlot(new Slot(this.inputInventory, 3,84,49){
             @Override
-            public boolean mayPlace(ItemStack p_75214_1_) {return true;}
+            public boolean mayPlace(ItemStack p_75214_1_) {
+                return super.mayPlace(Instas.ItemStackCustom(ModItem.CANON));
+            }
         });
-
         //ArmeResult
         this.addSlot(new Slot(this.inputInventory, 4,151,63){
             @Override
-            public boolean mayPickup(PlayerEntity p_82869_1_) {return true;}
+            public boolean mayPlace(ItemStack p_75214_1_) {
+                return false;
+            }
+
+            @Override
+            public ItemStack onTake(PlayerEntity p_190901_1_, ItemStack p_190901_2_) {
+                return super.onTake(p_190901_1_, p_190901_2_);
+            }
         });
 
         for(int i = 0; i < 3; ++i) {
@@ -78,14 +89,11 @@ public class TableContainer extends Container {
     }
 
     @Override
-    public void removed(PlayerEntity p_75134_1_) {
-        super.removed(p_75134_1_);
+    public boolean stillValid(PlayerEntity p_75145_1_) {
+        return this.inputInventory.stillValid(p_75145_1_);
     }
 
-    @Override
-    public boolean stillValid(PlayerEntity p_75145_1_) {
-        return stillValid(this.worldPosCallable, p_75145_1_, ModBlock.TABLE_D_ASSEMBLAGE.get());
-    }
+    
 
     @Override
     public boolean clickMenuButton(PlayerEntity p_75140_1_, int p_75140_2_) {

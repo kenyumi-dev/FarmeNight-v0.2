@@ -1,0 +1,13 @@
+{
+  "type": "farmenight:arme",
+  "ingredients": [
+    {"item": "farmenight:crosse"},
+    {"item": "farmenight:gardemain"},
+    {"item": "farmenight:chargeur"},
+    {"item": "farmenight:canon"}
+  ],
+  "result": {
+    "item": "farmenight:ak_47"
+  },
+  "mutationTime": 60
+}

@@ -1,6 +1,5 @@
 package fr.shadou.farmenight;
 
-import fr.shadou.farmenight.claim.claimworld.ClaimStrokage;
 import fr.shadou.farmenight.init.*;
 import fr.shadou.farmenight.pnj.PNJVinRenderer;
 import fr.shadou.farmenight.production.arme.TableContainerScreen;
