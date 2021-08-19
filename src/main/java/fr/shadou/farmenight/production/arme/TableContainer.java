@@ -37,20 +37,6 @@ public class TableContainer extends Container {
         this.addSlot(new Slot(this.inputInventory, 0, 10, 33) {
             @Override
             public boolean mayPlace(ItemStack p_75214_1_) {
-                System.out.println("click");
-                if (p_75214_1_ == Instas.ItemStackCustom(ModItem.CROSSE)){
-                    System.out.println("crosse");
-                    if (this.container.getItem(1) == Instas.ItemStackCustom(ModItem.GARDEMAIN)){
-                        System.out.println("gardemain");
-                        if (this.container.getItem(2)== Instas.ItemStackCustom(ModItem.CHARGEUR)){
-                            System.out.println("charguer");
-                            if (this.container.getItem(3)== Instas.ItemStackCustom(ModItem.CANON)){
-                                System.out.println("canon");
-                                this.container.setItem(4, Instas.ItemStackCustom(ModItem.AK_47));
-                            }
-                        }
-                    }
-                }
                 return true;
             }
         });
@@ -58,16 +44,6 @@ public class TableContainer extends Container {
         this.addSlot(new Slot(this.inputInventory, 1, 57, 26) {
             @Override
             public boolean mayPlace(ItemStack p_75214_1_) {
-
-                if (this.container.getItem(0)== Instas.ItemStackCustom(ModItem.CROSSE)){
-                    if (this.container.getItem(1) == Instas.ItemStackCustom(ModItem.GARDEMAIN)){
-                        if (this.container.getItem(2)== Instas.ItemStackCustom(ModItem.CHARGEUR)){
-                            if (this.container.getItem(3)== Instas.ItemStackCustom(ModItem.CANON)){
-                                this.container.setItem(4, Instas.ItemStackCustom(ModItem.AK_47));
-                            }
-                        }
-                    }
-                }
                 return true;
             }
         });
@@ -75,46 +51,19 @@ public class TableContainer extends Container {
         this.addSlot(new Slot(this.inputInventory, 2,104,23){
             @Override
             public boolean mayPlace(ItemStack p_75214_1_) {
-
-                if (this.container.getItem(0)== Instas.ItemStackCustom(ModItem.CROSSE)){
-                    if (this.container.getItem(1) == Instas.ItemStackCustom(ModItem.GARDEMAIN)){
-                        if (this.container.getItem(2)== Instas.ItemStackCustom(ModItem.CHARGEUR)){
-                            if (this.container.getItem(3)== Instas.ItemStackCustom(ModItem.CANON)){
-                                this.container.setItem(4, Instas.ItemStackCustom(ModItem.AK_47));
-                            }
-                        }
-                    }
-                }
                 return true;
             }
         });
         //Canon
         this.addSlot(new Slot(this.inputInventory, 3,84,49){
             @Override
-            public boolean mayPlace(ItemStack p_75214_1_) {
-                if (this.container.getItem(0)== Instas.ItemStackCustom(ModItem.CROSSE)){
-
-                    if (this.container.getItem(1) == Instas.ItemStackCustom(ModItem.GARDEMAIN)){
-                        if (this.container.getItem(2)== Instas.ItemStackCustom(ModItem.CHARGEUR)){
-                            if (this.container.getItem(3)== Instas.ItemStackCustom(ModItem.CANON)){
-                               this.container.setItem(4, Instas.ItemStackCustom(ModItem.AK_47));
-                            }
-                        }
-                    }
-                }return true;
-
-            }
+            public boolean mayPlace(ItemStack p_75214_1_) {return true;}
         });
 
         //ArmeResult
         this.addSlot(new Slot(this.inputInventory, 4,151,63){
             @Override
-            public boolean mayPickup(PlayerEntity p_82869_1_) {
-                for (int i = 0; i < 4; i++) {
-                    this.container.removeItem(i, 1);
-                }
-                return super.mayPickup(p_82869_1_);
-            }
+            public boolean mayPickup(PlayerEntity p_82869_1_) {return true;}
         });
 
         for(int i = 0; i < 3; ++i) {
@@ -138,6 +87,10 @@ public class TableContainer extends Container {
         return stillValid(this.worldPosCallable, p_75145_1_, ModBlock.TABLE_D_ASSEMBLAGE.get());
     }
 
+    @Override
+    public boolean clickMenuButton(PlayerEntity p_75140_1_, int p_75140_2_) {
+        return super.clickMenuButton(p_75140_1_, p_75140_2_);
+    }
 
     @Override
     public void setItem(int p_75141_1_, ItemStack p_75141_2_) {
